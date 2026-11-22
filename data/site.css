@@ -100,7 +100,6 @@ pre code { background: none; padding: 0; font-size: inherit; }
 
 /* ---------- Banner ---------- */
 .banner { background: var(--band); }
-.banner a { display: block; text-decoration: none; }
 .banner img {
   display: block;
   margin: 0 auto;
