@@ -26,7 +26,16 @@ title: "Your essay title"
 First paragraph…
 ```
 
-The date in the file name is the publish date. The essay appears at `/writing/YYYY/short-title/`, on the Writing page, in the home page's "Recent writing", and in the RSS feed (`/feed.xml`).
+The date in the file name is the publish date. The essay appears at `/writing/YYYY/short-title/`, on the Writing page, and in the RSS feed (`/feed.xml`).
+
+To also list it under "Selected writing" on the home page, add `selected: true` below the title:
+
+```markdown
+---
+title: "Your essay title"
+selected: true
+---
+```
 
 ## Adding a publication
 

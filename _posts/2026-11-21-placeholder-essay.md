@@ -1,6 +1,7 @@
 ---
 title: "Placeholder: what an essay looks like"
 description: "A sample post showing how essays are formatted on this site."
+selected: true
 ---
 
 This is a sample post so you can see how essays look. Delete this file (`_posts/2026-11-21-placeholder-essay.md`) once you publish your first real one.

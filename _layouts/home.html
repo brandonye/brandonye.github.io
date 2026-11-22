@@ -17,10 +17,11 @@ layout: default
 </section>
 {% endif %}
 
-{% if site.posts.size > 0 %}
+{% assign selected_posts = site.posts | where: "selected", true %}
+{% if selected_posts.size > 0 %}
 <section>
-  <h2>Recent writing</h2>
-  {% include post-list.html posts=site.posts limit=5 %}
+  <h2>Selected writing</h2>
+  {% include post-list.html posts=selected_posts %}
   <p class="more"><a href="{{ '/writing/' | relative_url }}">All writing →</a></p>
 </section>
 {% endif %}
