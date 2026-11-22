@@ -67,11 +67,11 @@ Open http://localhost:4000.
 
 ## Banner
 
-The banner is two compressed copies in `data/img/`. To swap in a new image, make both sizes from it (replace `new-banner.png` with your file):
+The banner is two compressed copies in `assets/img/`. To swap in a new image, make both sizes from it (replace `new-banner.png` with your file):
 
 ```bash
-sips -s format jpeg -s formatOptions 82 --resampleWidth 2000 new-banner.png --out data/img/banner-2000.jpg
-sips -s format jpeg -s formatOptions 80 --resampleWidth 1000 new-banner.png --out data/img/banner-1000.jpg
+sips -s format jpeg -s formatOptions 82 --resampleWidth 2000 new-banner.png --out assets/img/banner-2000.jpg
+sips -s format jpeg -s formatOptions 80 --resampleWidth 1000 new-banner.png --out assets/img/banner-1000.jpg
 ```
 
 The full-quality original of the current banner is kept in git history:
@@ -83,6 +83,6 @@ git show 0ecb31e:data/the-revolution.png > the-revolution.png
 ## Layout of this repo
 
 - `_layouts/`, `_includes/`: the page templates
-- `data/`: files served as-is on the site: stylesheet, banner images, CV
+- `assets/`: files served as-is on the site: stylesheet, banner images, CV
 - `_data/`: note the underscore. This is your publication list, which Jekyll reads to build pages and doesn't publish as a file
 - `docs/`: design notes, not published on the site

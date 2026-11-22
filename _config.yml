@@ -20,8 +20,8 @@ links:
   linkedin: "https://www.linkedin.com/in/brandonye/"
 
 # Your CV. Hidden for now: to show the CV link again, uncomment the line
-# below and remove `data/cv.pdf` from .gitignore so the file is published.
-# cv: /data/cv.pdf
+# below and remove `assets/cv.pdf` from .gitignore so the file is published.
+# cv: /assets/cv.pdf
 
 # ---------------------------------------------------------------
 # Build settings. You shouldn't need to change these.

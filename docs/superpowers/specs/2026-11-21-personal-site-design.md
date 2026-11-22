@@ -50,7 +50,7 @@ Picked: option 1. Brandon accepted the proposal.
 - **Research `/research/`**: full publication list grouped by year, newest first.
 - **Writing `/writing/`**: all essays, newest first, with dates. Each essay
   has its own page.
-- **CV**: the nav link opens a PDF at `/data/cv.pdf`.
+- **CV**: the nav link opens a PDF at `/assets/cv.pdf`.
 
 ## Look (agreed with Brandon)
 
@@ -77,7 +77,7 @@ Picked: option 1. Brandon accepted the proposal.
 
 - **Font:** system serif stack (Iowan Old Style / Charter / Georgia). No web
   font download, so pages load instantly. Swap for a Google Font later if wanted.
-- **Banner file:** compressed copy in `data/img/` (JPEG, ~2000px and ~1000px
+- **Banner file:** compressed copy in `assets/img/` (JPEG, ~2000px and ~1000px
   widths via `srcset`). (2026-11-21: the original 1.3 MB PNG was removed from
   `data/` at Brandon's request; it remains in git history at `0ecb31e`.) Excluded
   from the build.
