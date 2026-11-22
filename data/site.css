@@ -183,7 +183,7 @@ main { padding: 2.25rem 0 4rem; }
 /* ---------- Home ---------- */
 .contact { color: var(--muted); }
 .more { margin-top: 1.25rem; font-size: 1rem; }
-.more a { color: var(--muted); text-decoration: none; }
+.more a { color: var(--muted); }
 .more a:hover { color: var(--text); }
 
 /* ---------- Publications ---------- */
