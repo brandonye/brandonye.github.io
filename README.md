@@ -34,9 +34,10 @@ Add an entry to `_data/publications.yml`:
 
 ```yaml
 - title: "Paper title"
-  authors: "B. Ye, A. Coauthor"
+  authors: "Coauthor A, Ye B"
   venue: "Conference or Journal"
   year: 2026
+  note: "In review, <em>Journal</em>."   # optional: text after the year
   selected: true        # also show on the home page
   url: https://…        # optional: makes the title a link
   links:                # optional: any labels you like

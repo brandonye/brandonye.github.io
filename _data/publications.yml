@@ -1,33 +1,43 @@
-# Your publications. Order doesn't matter; pages sort by year, newest first.
+# Your publications. Pages sort by year, newest first; within a year,
+# entries keep the order they have here.
 #
 # Fields:
 #   title     (required)
-#   authors   your name, written as in `author.short_name` in _config.yml, is bolded
-#   venue     conference / journal / "Preprint"
+#   authors   your name, written as in `author.short_name` in _config.yml ("Ye B"), is bolded
+#   venue     journal / conference / "arXiv preprint"
 #   year
-#   selected  true = also show on the home page
+#   note      optional text after the year, e.g. "In review, <em>Nature</em>."
+#   selected  true = also show under "Selected publications" on the home page
 #   url       optional link on the title
 #   links     optional extra links, any labels you like (pdf, code, slides, doi…)
-#
-# Everything below is PLACEHOLDER content. Replace it with your own.
 
-- title: "Placeholder: Title of your most recent paper"
-  authors: "B. Ye, A. Coauthor, C. Advisor"
-  venue: "Conference or Journal Name"
+- title: "Clinician use of language models diverges from how the models are evaluated"
+  authors: "Vishwanath K, Lin H, Alyakin A, Lee JV, Hewitt DB, Yao JJ, Small WR, Khan HA, Orillac C, Varma A, Ye B, Alber DA, Stolovitzky G, Wiesenfeld B, Nov O, Wu W, Zhang K, Aphinyanaphongs Y, Requarth T, Oermann EK, The International Digital Twin Consortium Healthcare"
+  venue: "arXiv preprint"
   year: 2026
+  note: "In review, <em>Nature</em>."
   selected: true
+  url: "https://arxiv.org/abs/2610.11069"
   links:
-    pdf: "#"
-    code: "#"
+    pdf: "https://arxiv.org/pdf/2610.11069"
 
-- title: "Placeholder: A paper with no extra links"
-  authors: "A. Coauthor, B. Ye"
-  venue: "Workshop Name"
-  year: 2025
+- title: "Incidental information contaminates patient notes and disrupts clinical reasoning in large language models"
+  authors: "Vishwanath K, Ye B, Alyakin A, Markert JE, Hsieh A, Mańkowski M, Oermann EK"
+  venue: "arXiv preprint"
+  year: 2026
+  note: "In review, <em>Science</em>."
   selected: true
-
-- title: "Placeholder: A preprint without a venue yet"
-  authors: "B. Ye, D. Collaborator"
-  year: 2025
+  url: "https://arxiv.org/abs/2610.08585"
   links:
-    arXiv: "#"
+    pdf: "https://arxiv.org/pdf/2610.08585"
+
+- title: "Determining the efficacy of ExThera Seraph100 blood filtration in patients diagnosed with pancreatic cancer through the liquid biopsy"
+  authors: "Shishido SN†, Suresh DD†, Courcoubetis G, Ye B, Lin E, Mason J, Park K, Lewis M, Wang R, Lo SK, Kuhn P, Pandol S"
+  venue: "BJC Reports"
+  year: 2024
+  note: "† Equal contribution."
+
+- title: "Liquid biopsy landscape in patients with primary upper tract urothelial carcinoma"
+  authors: "Shishido SN, Ghoreifi A, Sayeed S, Courcoubetis G, Huang A, Ye B, Mrutyunjaya S, Gill IS, Kuhn P, Mason J, Djaladat H"
+  venue: "Cancers"
+  year: 2022

@@ -9,8 +9,8 @@
   {%- if authors %}
   <span class="pub-authors">{{ authors }}</span>
   {%- endif %}
-  {%- if p.venue or p.year %}
-  <span class="pub-venue">{% if p.venue %}<em>{{ p.venue }}</em>{% if p.year %}, {% endif %}{% endif %}{{ p.year }}</span>
+  {%- if p.venue or p.year or p.note %}
+  <span class="pub-venue">{% if p.venue %}<em>{{ p.venue }}</em>{% if p.year %}, {% endif %}{% endif %}{{ p.year }}{% if p.note %}{% if p.venue or p.year %}. {% endif %}{{ p.note }}{% endif %}</span>
   {%- endif %}
   {%- if p.links and p.links.size > 0 %}
   <span class="pub-links">{% for link in p.links %}<a href="{{ link[1] }}">{{ link[0] }}</a>{% endfor %}</span>
