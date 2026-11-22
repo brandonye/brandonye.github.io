@@ -156,18 +156,22 @@ pre code { background: none; padding: 0; font-size: inherit; }
   :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
 }
 
-main { padding: 2.25rem 0 3rem; }
+main { padding: 2.25rem 0 4rem; }
 
-.site-footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.25rem 0 2.5rem;
-  border-top: 1px solid var(--rule);
-  color: var(--muted);
-  font-size: 0.95rem;
+/* ---------- Page transitions ----------
+   Moving between pages cross-fades the content while the banner and
+   header stay put. Browsers without view transitions switch instantly,
+   and visitors who ask for reduced motion get no animation. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
 }
-.site-footer a { color: inherit; }
+.banner { view-transition-name: banner; }
+.site-header { view-transition-name: site-header; }
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 220ms;
+  animation-timing-function: ease-in-out;
+}
 
 /* ---------- Home ---------- */
 .contact { color: var(--muted); }

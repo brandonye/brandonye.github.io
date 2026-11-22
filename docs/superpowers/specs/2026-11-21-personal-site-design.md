@@ -43,9 +43,10 @@ Picked: option 1. Brandon accepted the proposal.
 
 ## Pages (agreed with Brandon)
 
-- **Home `/`**: full banner; name + nav (Research · Writing · CV); short bio;
-  link line (email · Google Scholar · GitHub · CV PDF); "Selected
-  publications"; "Recent writing" (latest 3–5 essays).
+- **Home `/`**: banner; name + nav (Research · Writing); short bio;
+  link line (Email · Google Scholar · CV); "Selected publications";
+  "Recent writing" (latest 3–5 essays). (2026-11-21: CV removed from the
+  nav, GitHub removed from the link line, at Brandon's request.)
 - **Research `/research/`**: full publication list grouped by year, newest first.
 - **Writing `/writing/`**: all essays, newest first, with dates. Each essay
   has its own page.
@@ -54,6 +55,8 @@ Picked: option 1. Brandon accepted the proposal.
 ## Look (agreed with Brandon)
 
 - White page, one narrow text column (~680px), no sidebar, icons or animations.
+  Exception (2026-11-21): a short CSS cross-fade between pages (view
+  transitions), with banner and header held still; off for reduced motion.
 - One serif typeface for text.
 - Dark mode follows the visitor's system setting until they use the
   light/dark toggle in the nav, which is remembered (`localStorage`).
