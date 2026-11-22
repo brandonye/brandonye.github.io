@@ -1,0 +1,21 @@
+---
+title: Research
+permalink: /research/
+---
+<h1>Research</h1>
+
+<!-- PLACEHOLDER: a sentence or two on your research interests. -->
+<p class="lede">[A sentence or two on your research interests.]</p>
+
+{% assign pubs = site.data.publications %}
+{% if pubs and pubs.size > 0 %}
+  {% assign by_year = pubs | group_by: "year" | sort: "name" | reverse %}
+  {% for group in by_year %}
+  <h2 class="year">{% if group.name == "" %}Undated{% else %}{{ group.name }}{% endif %}</h2>
+  <ul class="pubs">
+    {% for p in group.items %}{% include publication.html pub=p %}{% endfor %}
+  </ul>
+  {% endfor %}
+{% else %}
+<p class="empty">No publications listed yet.</p>
+{% endif %}

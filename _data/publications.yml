@@ -1,0 +1,33 @@
+# Your publications. Order doesn't matter; pages sort by year, newest first.
+#
+# Fields:
+#   title     (required)
+#   authors   your name, written as in `author.short_name` in _config.yml, is bolded
+#   venue     conference / journal / "Preprint"
+#   year
+#   selected  true = also show on the home page
+#   url       optional link on the title
+#   links     optional extra links, any labels you like (pdf, code, slides, doi…)
+#
+# Everything below is PLACEHOLDER content. Replace it with your own.
+
+- title: "Placeholder: Title of your most recent paper"
+  authors: "B. Ye, A. Coauthor, C. Advisor"
+  venue: "Conference or Journal Name"
+  year: 2026
+  selected: true
+  links:
+    pdf: "#"
+    code: "#"
+
+- title: "Placeholder: A paper with no extra links"
+  authors: "A. Coauthor, B. Ye"
+  venue: "Workshop Name"
+  year: 2025
+  selected: true
+
+- title: "Placeholder: A preprint without a venue yet"
+  authors: "B. Ye, D. Collaborator"
+  year: 2025
+  links:
+    arXiv: "#"

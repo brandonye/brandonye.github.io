@@ -1,0 +1,18 @@
+{%- assign p = include.pub -%}
+{%- assign authors = p.authors -%}
+{%- if site.author.short_name and site.author.short_name != "" -%}
+  {%- capture me -%}<strong>{{ site.author.short_name }}</strong>{%- endcapture -%}
+  {%- assign authors = authors | replace: site.author.short_name, me -%}
+{%- endif -%}
+<li class="pub">
+  <span class="pub-title">{% if p.url %}<a href="{{ p.url }}">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</span>
+  {%- if authors %}
+  <span class="pub-authors">{{ authors }}</span>
+  {%- endif %}
+  {%- if p.venue or p.year %}
+  <span class="pub-venue">{% if p.venue %}<em>{{ p.venue }}</em>{% if p.year %}, {% endif %}{% endif %}{{ p.year }}</span>
+  {%- endif %}
+  {%- if p.links and p.links.size > 0 %}
+  <span class="pub-links">{% for link in p.links %}<a href="{{ link[1] }}">{{ link[0] }}</a>{% endfor %}</span>
+  {%- endif %}
+</li>

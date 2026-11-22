@@ -1,0 +1,12 @@
+---
+title: Writing
+permalink: /writing/
+---
+<h1>Writing</h1>
+<p class="lede">Short essays.</p>
+
+{% if site.posts.size > 0 %}
+{% include post-list.html posts=site.posts %}
+{% else %}
+<p class="empty">No essays yet.</p>
+{% endif %}

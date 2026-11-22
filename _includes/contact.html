@@ -1,0 +1,7 @@
+<p class="contact">
+  {%- assign sep = "" -%}
+  {%- if site.author.email -%}{{ sep }}<a href="mailto:{{ site.author.email }}">Email</a>{%- assign sep = '<span aria-hidden="true"> · </span>' -%}{%- endif -%}
+  {%- if site.links.scholar -%}{{ sep }}<a href="{{ site.links.scholar }}">Google Scholar</a>{%- assign sep = '<span aria-hidden="true"> · </span>' -%}{%- endif -%}
+  {%- if site.links.github -%}{{ sep }}<a href="{{ site.links.github }}">GitHub</a>{%- assign sep = '<span aria-hidden="true"> · </span>' -%}{%- endif -%}
+  {%- if site.cv -%}{{ sep }}<a href="{{ site.cv | relative_url }}">CV (PDF)</a>{%- endif -%}
+</p>

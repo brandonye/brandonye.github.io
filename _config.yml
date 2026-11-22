@@ -1,0 +1,59 @@
+# ---------------------------------------------------------------
+# Site settings. Edit the values in this first block.
+# ---------------------------------------------------------------
+title: Brandon Ye
+description: >-
+  Research and essays.
+url: "https://brandonye.github.io"
+baseurl: ""
+lang: en
+
+author:
+  name: Brandon Ye
+  # How your name is written in author lists. It is shown in bold there.
+  short_name: "B. Ye"
+  email: you@example.com # PLACEHOLDER: your public email
+
+links:
+  scholar: "https://scholar.google.com/" # PLACEHOLDER: your Google Scholar profile
+  github: "https://github.com/brandonye"
+
+# Your CV. Replace assets/cv.pdf with your own file (keep the name).
+cv: /assets/cv.pdf
+
+# ---------------------------------------------------------------
+# Build settings. You shouldn't need to change these.
+# ---------------------------------------------------------------
+repository: brandonye/brandonye.github.io
+theme: null # no GitHub default theme; this site has its own layouts
+permalink: /writing/:year/:title/
+markdown: kramdown
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: feed.xml
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - data/
+  - docs/
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .bundle/
+  - .jekyll-cache/

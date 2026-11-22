@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<section class="intro">
+{{ content }}
+{% include contact.html %}
+</section>
+
+{% assign selected = site.data.publications | where: "selected", true %}
+{% if selected.size > 0 %}
+<section>
+  <h2>Selected publications</h2>
+  <ul class="pubs">
+    {% for p in selected %}{% include publication.html pub=p %}{% endfor %}
+  </ul>
+  <p class="more"><a href="{{ '/research/' | relative_url }}">All publications →</a></p>
+</section>
+{% endif %}
+
+{% if site.posts.size > 0 %}
+<section>
+  <h2>Recent writing</h2>
+  {% include post-list.html posts=site.posts limit=5 %}
+  <p class="more"><a href="{{ '/writing/' | relative_url }}">All writing →</a></p>
+</section>
+{% endif %}
