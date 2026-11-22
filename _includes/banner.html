@@ -1,9 +1,9 @@
-<div class="banner banner--{{ include.size }}">
+<div class="banner">
   <a href="{{ '/' | relative_url }}" aria-label="Home">
     <img
       src="{{ '/assets/img/banner-2000.jpg' | relative_url }}"
       srcset="{{ '/assets/img/banner-1000.jpg' | relative_url }} 1000w, {{ '/assets/img/banner-2000.jpg' | relative_url }} 2000w"
-      sizes="{% if include.size == 'full' %}(min-width: 1400px) 1400px, 100vw{% else %}430px{% endif %}"
+      sizes="430px"
       width="2000" height="656"
       alt="A black-and-white march of evolution: from an ape, through upright humans with tools, to a person hunched at a computer, and finally a robot.">
   </a>

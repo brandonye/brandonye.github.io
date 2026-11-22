@@ -4,8 +4,7 @@
 {% include head.html %}
 </head>
 <body>
-{% if page.banner == "full" %}{% assign banner_size = "full" %}{% else %}{% assign banner_size = "slim" %}{% endif %}
-{% include banner.html size=banner_size %}
+{% include banner.html %}
 <div class="container">
 {% include nav.html %}
 <main id="content">

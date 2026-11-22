@@ -55,10 +55,12 @@ Picked: option 1. Brandon accepted the proposal.
 
 - White page, one narrow text column (~680px), no sidebar, icons or animations.
 - One serif typeface for text.
-- Automatic dark mode following the visitor's system setting.
-- Home: banner at full width inside a full-width black band.
-- Other pages: the *whole* banner shown smaller (~140px tall), centered
-  in the same black band, so essays start near the top of the screen.
+- Dark mode follows the visitor's system setting until they use the
+  light/dark toggle in the nav, which is remembered (`localStorage`).
+  The toggle is the site's only JavaScript (`assets/theme.js`). (Added 2026-11-21.)
+- Every page, home included: the *whole* banner shown small (~140px tall),
+  centered in a full-width black band. (Changed 2026-11-21: the full-width
+  home banner was too jarring.)
 
 ## How content is added
 

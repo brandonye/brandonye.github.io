@@ -1,6 +1,5 @@
 ---
 layout: home
-banner: full
 ---
 
 <!-- PLACEHOLDER BIO: replace the bracketed text below with your own. -->
