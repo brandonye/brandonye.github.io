@@ -9,7 +9,7 @@ Source for https://brandonye.github.io. GitHub Pages builds it with Jekyll on ev
 | Bio on the home page                | `index.md`                                     |
 | Name, email, Scholar link           | top block of `_config.yml`                     |
 | Publications                        | `_data/publications.yml`                       |
-| CV                                  | replace `assets/cv.pdf` (keep the file name)   |
+| CV                                  | replace `data/cv.pdf` (keep the file name)     |
 | Research page intro                 | `research.html`                                |
 
 Commit and push to `main`; the live site updates within a minute or two.
@@ -67,14 +67,22 @@ Open http://localhost:4000.
 
 ## Banner
 
-`data/the-revolution.png` is the original. The site uses compressed copies in `assets/img/`. To regenerate them after swapping the image:
+The banner is two compressed copies in `data/img/`. To swap in a new image, make both sizes from it (replace `new-banner.png` with your file):
 
 ```bash
-sips -s format jpeg -s formatOptions 82 --resampleWidth 2000 data/the-revolution.png --out assets/img/banner-2000.jpg
-sips -s format jpeg -s formatOptions 80 --resampleWidth 1000 data/the-revolution.png --out assets/img/banner-1000.jpg
+sips -s format jpeg -s formatOptions 82 --resampleWidth 2000 new-banner.png --out data/img/banner-2000.jpg
+sips -s format jpeg -s formatOptions 80 --resampleWidth 1000 new-banner.png --out data/img/banner-1000.jpg
+```
+
+The full-quality original of the current banner is kept in git history:
+
+```bash
+git show 0ecb31e:data/the-revolution.png > the-revolution.png
 ```
 
 ## Layout of this repo
 
-- `_layouts/`, `_includes/`, `assets/site.css`: the templates and the single stylesheet
+- `_layouts/`, `_includes/`: the page templates
+- `data/`: files served as-is on the site: stylesheet, theme toggle script, favicon, banner images, CV
+- `_data/`: note the underscore. This is your publication list, which Jekyll reads to build pages and doesn't publish as a file
 - `docs/`: design notes, not published on the site

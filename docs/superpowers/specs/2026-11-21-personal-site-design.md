@@ -50,7 +50,7 @@ Picked: option 1. Brandon accepted the proposal.
 - **Research `/research/`**: full publication list grouped by year, newest first.
 - **Writing `/writing/`**: all essays, newest first, with dates. Each essay
   has its own page.
-- **CV**: the nav link opens a PDF at `/assets/cv.pdf`.
+- **CV**: the nav link opens a PDF at `/data/cv.pdf`.
 
 ## Look (agreed with Brandon)
 
@@ -60,7 +60,7 @@ Picked: option 1. Brandon accepted the proposal.
 - One serif typeface for text.
 - Dark mode follows the visitor's system setting until they use the
   light/dark toggle in the nav, which is remembered (`localStorage`).
-  The toggle is the site's only JavaScript (`assets/theme.js`). (Added 2026-11-21.)
+  The toggle is the site's only JavaScript (`data/theme.js`). (Added 2026-11-21.)
 - Every page, home included: the *whole* banner shown small (~140px tall),
   centered in a full-width black band. (Changed 2026-11-21: the full-width
   home banner was too jarring.)
@@ -77,8 +77,9 @@ Picked: option 1. Brandon accepted the proposal.
 
 - **Font:** system serif stack (Iowan Old Style / Charter / Georgia). No web
   font download, so pages load instantly. Swap for a Google Font later if wanted.
-- **Banner file:** compressed copy in `assets/img/` (JPEG, ~2000px and ~1000px
-  widths via `srcset`). The original 1.3 MB PNG stays in `data/`, excluded
+- **Banner file:** compressed copy in `data/img/` (JPEG, ~2000px and ~1000px
+  widths via `srcset`). (2026-11-21: the original 1.3 MB PNG was removed from
+  `data/` at Brandon's request; it remains in git history at `0ecb31e`.) Excluded
   from the build.
 - **Plugins:** `jekyll-feed` (RSS for essays at `/feed.xml`), `jekyll-seo-tag`
   (link previews), `jekyll-sitemap`. All are GitHub Pages–whitelisted.

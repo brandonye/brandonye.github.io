@@ -12,13 +12,13 @@ author:
   name: Brandon Ye
   # How your name is written in author lists. It is shown in bold there.
   short_name: "B. Ye"
-  email: you@example.com # PLACEHOLDER: your public email
+  email: brandonye89@gmail.com
 
 links:
-  scholar: "https://scholar.google.com/" # PLACEHOLDER: your Google Scholar profile
+  scholar: "https://scholar.google.com/citations?user=ZhQE70YAAAAJ&hl=en"
 
-# Your CV. Replace assets/cv.pdf with your own file (keep the name).
-cv: /assets/cv.pdf
+# Your CV. Replace data/cv.pdf with your own file (keep the name).
+cv: /data/cv.pdf
 
 # ---------------------------------------------------------------
 # Build settings. You shouldn't need to change these.
@@ -48,7 +48,6 @@ defaults:
       layout: post
 
 exclude:
-  - data/
   - docs/
   - README.md
   - Gemfile
