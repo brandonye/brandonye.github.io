@@ -168,8 +168,16 @@ main { padding: 2.25rem 0 4rem; }
 .site-header { view-transition-name: site-header; }
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 220ms;
+  animation-duration: 300ms;
   animation-timing-function: ease-in-out;
+}
+
+/* When you follow a link from further down a page, the banner and header
+   glide back into place at the top: quick at first, then settling gently. */
+::view-transition-group(banner),
+::view-transition-group(site-header) {
+  animation-duration: 550ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Switching light/dark cross-fades the whole page, a little slower. */
