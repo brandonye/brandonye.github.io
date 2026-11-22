@@ -9,7 +9,7 @@ Source for https://brandonye.github.io. GitHub Pages builds it with Jekyll on ev
 | Bio on the home page                | `index.md`                                     |
 | Name, email, Scholar, LinkedIn      | top block of `_config.yml`                     |
 | Publications                        | `_data/publications.yml`                       |
-| CV                                  | replace `data/cv.pdf` (keep the file name)     |
+| CV (hidden for now)                 | see the `cv:` comment in `_config.yml`         |
 | Research page intro                 | `research.html`                                |
 
 Commit and push to `main`; the live site updates within a minute or two.

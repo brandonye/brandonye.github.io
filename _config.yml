@@ -19,8 +19,9 @@ links:
   scholar: "https://scholar.google.com/citations?user=ZhQE70YAAAAJ&hl=en"
   linkedin: "https://www.linkedin.com/in/brandonye/"
 
-# Your CV. Replace data/cv.pdf with your own file (keep the name).
-cv: /data/cv.pdf
+# Your CV. Hidden for now: to show the CV link again, uncomment the line
+# below and remove `data/cv.pdf` from .gitignore so the file is published.
+# cv: /data/cv.pdf
 
 # ---------------------------------------------------------------
 # Build settings. You shouldn't need to change these.
