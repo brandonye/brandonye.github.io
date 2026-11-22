@@ -7,7 +7,7 @@ Source for https://brandonye.github.io. GitHub Pages builds it with Jekyll on ev
 | To change…                          | Edit                                           |
 | ----------------------------------- | ---------------------------------------------- |
 | Bio on the home page                | `index.md`                                     |
-| Name, email, Scholar link           | top block of `_config.yml`                     |
+| Name, email, Scholar, LinkedIn      | top block of `_config.yml`                     |
 | Publications                        | `_data/publications.yml`                       |
 | CV                                  | replace `data/cv.pdf` (keep the file name)     |
 | Research page intro                 | `research.html`                                |
