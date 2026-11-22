@@ -5,20 +5,18 @@
 <script>
   /* Light / dark toggle. Inline on purpose: the button only appears once this
      runs, so keeping it in the page means it can never go missing because a
-     separate script file failed to load. With no saved choice the site
-     follows the system setting; a click flips the look (cross-fading where
-     the browser supports it) and remembers the choice. */
+     separate script file failed to load. The site starts in light mode; a
+     click flips the look (cross-fading where the browser supports it) and
+     remembers the choice. */
   (function () {
     var root = document.documentElement;
     var button = document.querySelector(".theme-toggle");
     if (!button) return;
 
-    var systemDark = window.matchMedia("(prefers-color-scheme: dark)");
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     function isDark() {
-      var chosen = root.getAttribute("data-theme");
-      return chosen ? chosen === "dark" : systemDark.matches;
+      return root.getAttribute("data-theme") === "dark";
     }
 
     function sync() {
@@ -43,8 +41,6 @@
         root.classList.remove("theme-changing");
       });
     });
-
-    if (systemDark.addEventListener) systemDark.addEventListener("change", sync);
 
     button.hidden = false;
     sync();
