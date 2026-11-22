@@ -187,15 +187,17 @@ main { padding: 2.25rem 0 4rem; }
 .more a:hover { color: var(--text); }
 
 /* ---------- Publications ---------- */
-.pubs { list-style: none; padding: 0; margin: 0; }
-.pub { margin: 0 0 1.4rem; }
+/* Kept smaller than body text so the list doesn't outweigh the bio. */
+.pubs { list-style: none; padding: 0; margin: 0; line-height: 1.5; }
+.pub { margin: 0 0 1.25rem; }
 .pub > span { display: block; }
-.pub-title { font-weight: 600; }
+.pub-title { font-size: 1rem; font-weight: 600; }
 .pub-authors,
-.pub-venue { color: var(--muted); font-size: 1rem; }
+.pub-venue,
+.pub-links { color: var(--muted); font-size: 0.875rem; }
 .pub-authors strong { color: var(--text); font-weight: 600; }
-.pub-links { font-size: 0.95rem; }
 .pub-links a { margin-right: 0.9rem; }
+.pub sup { font-size: 0.75em; line-height: 0; }
 .year {
   color: var(--muted);
   font-weight: 400;
