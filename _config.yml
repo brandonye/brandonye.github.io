@@ -2,8 +2,9 @@
 # Site settings. Edit the values in this first block.
 # ---------------------------------------------------------------
 title: Brandon Ye
-description: >-
-  Research and essays.
+# Left empty on purpose: otherwise GitHub fills in the repo description and
+# the home page's browser tab reads "Brandon Ye | <description>".
+description: ""
 url: "https://brandonye.github.io"
 baseurl: ""
 lang: en

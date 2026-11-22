@@ -173,6 +173,14 @@ main { padding: 2.25rem 0 4rem; }
   animation-timing-function: ease-in-out;
 }
 
+/* Switching light/dark cross-fades the whole page, a little slower. */
+:root.theme-changing::view-transition-group(*),
+:root.theme-changing::view-transition-old(*),
+:root.theme-changing::view-transition-new(*) {
+  animation-duration: 450ms;
+  animation-timing-function: ease-in-out;
+}
+
 /* ---------- Home ---------- */
 .contact { color: var(--muted); }
 .more { margin-top: 1.25rem; font-size: 1rem; }

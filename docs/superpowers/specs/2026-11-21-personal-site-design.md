@@ -60,7 +60,7 @@ Picked: option 1. Brandon accepted the proposal.
 - One serif typeface for text.
 - Dark mode follows the visitor's system setting until they use the
   light/dark toggle in the nav, which is remembered (`localStorage`).
-  The toggle is the site's only JavaScript (`data/theme.js`). (Added 2026-11-21.)
+  The toggle is the site's only JavaScript, inline in `_includes/theme-toggle.html` (moved inline after a stale cached page lost its separate script file). (Added 2026-11-21.)
 - Every page, home included: the *whole* banner shown small (~140px tall),
   centered in a full-width black band. (Changed 2026-11-21: the full-width
   home banner was too jarring.)

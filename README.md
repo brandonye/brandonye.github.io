@@ -83,6 +83,6 @@ git show 0ecb31e:data/the-revolution.png > the-revolution.png
 ## Layout of this repo
 
 - `_layouts/`, `_includes/`: the page templates
-- `data/`: files served as-is on the site: stylesheet, theme toggle script, favicon, banner images, CV
+- `data/`: files served as-is on the site: stylesheet, banner images, CV
 - `_data/`: note the underscore. This is your publication list, which Jekyll reads to build pages and doesn't publish as a file
 - `docs/`: design notes, not published on the site
