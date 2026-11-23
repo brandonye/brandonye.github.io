@@ -186,6 +186,7 @@ main { padding: 2.25rem 0 4rem; }
   flex-wrap: wrap;
   gap: 0.3rem 1.4rem;
   color: var(--muted);
+  font-size: 0.9em;
 }
 .contact svg {
   width: 0.95em;
@@ -219,7 +220,6 @@ main { padding: 2.25rem 0 4rem; }
 }
 
 /* ---------- Writing ---------- */
-.lede,
 .empty { color: var(--muted); }
 .posts { list-style: none; padding: 0; margin: 0; }
 /* Space only between rows, so the first line starts at the same height as
