@@ -2,8 +2,18 @@
 title: Writing
 permalink: /writing/
 ---
-{% if site.posts.size > 0 %}
-{% include post-list.html posts=site.posts %}
+{% comment %} Selected essays first, then the rest, so nothing is listed twice. {% endcomment %}
+{% assign selected = site.posts | where: "selected", true %}
+{% assign rest = site.posts | where_exp: "post", "post.selected != true" %}
+{% if selected.size > 0 %}
+<h2>Selected writing</h2>
+{% include post-list.html posts=selected %}
+{% if rest.size > 0 %}
+<h2>More writing</h2>
+{% include post-list.html posts=rest %}
+{% endif %}
+{% elsif rest.size > 0 %}
+{% include post-list.html posts=rest %}
 {% else %}
 <p class="empty">No essays yet.</p>
 {% endif %}
