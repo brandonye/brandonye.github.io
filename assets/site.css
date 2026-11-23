@@ -200,8 +200,9 @@ main { padding: 2.25rem 0 4rem; }
 .more a:hover { color: var(--text); }
 
 /* ---------- Research ---------- */
-/* The research threads under the intro: a light indent, a little air between them. */
-.threads { padding-left: 1.2em; }
+/* The research threads under the intro: a touch smaller than the intro, with
+   a light indent and a little air between them. */
+.threads { padding-left: 1.2em; font-size: 0.9em; }
 .threads li + li { margin-top: 0.4em; }
 
 /* ---------- Publications ---------- */
