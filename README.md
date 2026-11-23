@@ -28,7 +28,7 @@ First paragraph…
 
 The date in the file name is the publish date. The essay appears at `/writing/YYYY/short-title/`, on the Writing page, and in the RSS feed (`/feed.xml`).
 
-To list it under "Selected writing" at the top of the Writing page, add `selected: true` below the title:
+To also list it under "Selected writing" on the home page, add `selected: true` below the title:
 
 ```markdown
 ---
@@ -47,7 +47,7 @@ Add an entry to `_data/publications.yml`:
   venue: "Conference or Journal"
   year: 2026
   note: "In review, <em>Journal</em>."   # optional: text after the year
-  selected: true        # list at the top of the Research page
+  selected: true        # also show on the home page
   url: https://…        # optional: makes the title a link
   links:                # optional: any labels you like
     pdf: https://…

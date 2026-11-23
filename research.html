@@ -7,16 +7,7 @@ permalink: /research/
 
 {% assign pubs = site.data.publications %}
 {% if pubs and pubs.size > 0 %}
-  {% comment %} Selected papers first; everything else follows by year, so nothing is listed twice. {% endcomment %}
-  {% assign selected = pubs | where: "selected", true %}
-  {% assign rest = pubs | where_exp: "p", "p.selected != true" %}
-  {% if selected.size > 0 %}
-  <h2>Selected publications</h2>
-  <ul class="pubs">
-    {% for p in selected %}{% include publication.html pub=p %}{% endfor %}
-  </ul>
-  {% endif %}
-  {% assign by_year = rest | group_by: "year" | sort: "name" | reverse %}
+  {% assign by_year = pubs | group_by: "year" | sort: "name" | reverse %}
   {% for group in by_year %}
   <h2 class="year">{% if group.name == "" %}Undated{% else %}{{ group.name }}{% endif %}</h2>
   <ul class="pubs">
