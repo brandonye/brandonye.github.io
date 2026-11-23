@@ -9,7 +9,7 @@ layout: default
 {% assign selected = site.data.publications | where: "selected", true %}
 {% if selected.size > 0 %}
 <section>
-  <h2>Selected publications</h2>
+  <h2>Selected work</h2>
   <ul class="pubs">
     {% for p in selected %}{% include publication.html pub=p %}{% endfor %}
   </ul>

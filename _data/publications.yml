@@ -7,7 +7,7 @@
 #   venue     journal / conference / "arXiv preprint"
 #   year
 #   note      optional text after the year, e.g. "In review, <em>Nature</em>."
-#   selected  true = also show under "Selected publications" on the home page
+#   selected  true = also show under "Selected work" on the home page
 #   url       optional link on the title
 #   links     optional extra links, any labels you like (pdf, code, slides, doi…)
 
