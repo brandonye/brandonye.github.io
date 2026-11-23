@@ -1,6 +1,6 @@
 <header class="site-header">
   {% if page.layout == "home" %}
-  <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+  <h1 class="site-title"><a href="{{ '/' | relative_url }}" aria-current="page">{{ site.title }}</a></h1>
   {% else %}
   <p class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></p>
   {% endif %}
