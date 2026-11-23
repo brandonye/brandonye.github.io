@@ -7,6 +7,14 @@
     var t = localStorage.getItem("theme");
     if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
   } catch (e) {}
+  /* At the very top of the page, pulling down past the top shows black,
+     continuing the banner, instead of the page colour (see site.css). */
+  (function () {
+    var root = document.documentElement;
+    function edge() { root.classList.toggle("at-top", window.scrollY <= 0); }
+    edge();
+    window.addEventListener("scroll", edge, { passive: true });
+  })();
 </script>
 <link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}">
 <title>{{ site.title }}</title>

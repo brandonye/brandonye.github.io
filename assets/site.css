@@ -30,9 +30,19 @@
 
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
+/* The colour behind the page, seen when you pull past its top or bottom
+   edge. At the very top (head.html adds .at-top) it's the banner's black, so
+   the banner looks like it carries on; everywhere else it's the page colour. */
+html { background-color: var(--bg); }
+html.at-top { background-color: var(--band); }
+
 body {
   margin: 0;
   background: var(--bg);
+  /* Fill at least the whole window, so the black behind the page never
+     shows below the content on a short page. */
+  min-height: 100vh;
+  min-height: 100dvh;
   color: var(--text);
   font-family: var(--serif);
   font-size: 1.125rem;
