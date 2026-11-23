@@ -263,9 +263,8 @@ main { padding: 2.25rem 0 4rem; }
   h1 { font-size: 1.6rem; }
   .site-header { padding-top: 1.25rem; }
   .banner img { height: 96px; }
-  .posts li { flex-direction: column; gap: 0; }
-  .posts li + li { margin-top: 0.9rem; }
-  /* The date is the first line here: give it the body text's line height
-     so it sits level with the first line on the other pages. */
-  .posts time { flex: none; line-height: calc(1.0625rem * 1.65); }
+  /* Date and title stay side by side, with a narrower date column so the
+     title has room; a long title wraps under itself. */
+  .posts li { gap: 0.9rem; }
+  .posts time { flex: 0 0 auto; min-width: 6rem; white-space: nowrap; }
 }
