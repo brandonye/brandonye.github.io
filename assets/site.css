@@ -179,7 +179,21 @@ main { padding: 2.25rem 0 4rem; }
 }
 
 /* ---------- Home ---------- */
-.contact { color: var(--muted); }
+/* Contact links sit in a row, spaced apart (no separators), and wrap on
+   narrow screens. Each icon takes the grey of its label. */
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.4rem;
+  color: var(--muted);
+}
+.contact svg {
+  width: 0.95em;
+  height: 0.95em;
+  margin-right: 0.4em;
+  vertical-align: -0.12em;
+  fill: currentColor;
+}
 .more { margin-top: 1.25rem; font-size: 1rem; }
 .more a { color: var(--muted); }
 .more a:hover { color: var(--text); }
