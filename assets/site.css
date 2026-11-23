@@ -199,6 +199,11 @@ main { padding: 2.25rem 0 4rem; }
 .more a { color: var(--muted); }
 .more a:hover { color: var(--text); }
 
+/* ---------- Research ---------- */
+/* The research threads under the intro: a light indent, a little air between them. */
+.threads { padding-left: 1.2em; }
+.threads li + li { margin-top: 0.4em; }
+
 /* ---------- Publications ---------- */
 /* Kept smaller than body text so the list doesn't outweigh the bio. */
 .pubs { list-style: none; padding: 0; margin: 0; line-height: 1.5; }
