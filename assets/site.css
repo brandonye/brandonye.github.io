@@ -7,7 +7,6 @@
   --underline: #c4c4c4;
   --code-bg: #eaeae8;
   --band: #000000;
-  --leaf: #4a6f34;     /* the leaf's green, shown when you hover the seal */
   --measure: 680px;
   --gutter: 24px;
   --serif: "Iowan Old Style", "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
@@ -23,7 +22,6 @@
   --rule: #2c2c2c;
   --underline: #5a5a5a;
   --code-bg: #1c1c1c;
-  --leaf: #8fb86c;
   color-scheme: dark;
 }
 
@@ -203,7 +201,7 @@ main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
    the page, the way a scroll ends with the artist's seal. The leaf is drawn
    from leaf.svg (vector, so it's sharp on any screen) in the text colour,
    light or dark. Clicking it goes back to the top of the page. On hover the
-   ink turns leaf green and the leaf lifts a little. */
+   ink turns into the green watercolor leaf and lifts a little. */
 /* Only when the page's content runs past the bottom of the screen: the
    script in default.html adds .long-page. Otherwise it takes no space. */
 .site-footer { display: none; justify-content: center; padding-bottom: 1.75rem; }
@@ -219,13 +217,30 @@ main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
   font: inherit;
   cursor: pointer;
 }
-.seal svg {
+/* The black ink leaf (vector) with the watercolor leaf (leaf-green.png)
+   stacked exactly on top of it, hidden until hover. */
+.seal-leaf {
+  position: relative;
   display: block;
   width: 20px;
   height: 20px;
-  fill: currentColor;
-  transition: color 250ms ease, transform 300ms ease;
+  transition: transform 300ms ease;
 }
+.seal-leaf svg,
+.seal-leaf img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: opacity 250ms ease;
+}
+.seal-leaf svg { fill: currentColor; }
+.seal-leaf img { opacity: 0; }
+/* The watercolor's deep greens would sink into the dark page, so in dark
+   mode its light and dark are flipped while keeping its greens: a pale
+   sage leaf that still shows the brushwork. */
+:root[data-theme="dark"] .seal-leaf img { filter: invert(1) hue-rotate(180deg) saturate(1.3); }
 .seal:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 /* "Back to top" beside the leaf; the two are centred together. */
 .seal-label {
@@ -237,13 +252,15 @@ main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
   transition: color 250ms ease;
 }
 /* Hover only on devices with a real pointer, so a tap on a phone doesn't
-   leave the leaf green. */
+   leave the leaf green: the ink fades into the watercolor leaf. */
 @media (hover: hover) {
-  .seal:hover svg { color: var(--leaf); transform: translateY(-1px); }
+  .seal:hover .seal-leaf { transform: translateY(-1px); }
+  .seal:hover .seal-leaf svg { opacity: 0; }
+  .seal:hover .seal-leaf img { opacity: 1; }
   .seal:hover .seal-label { color: var(--text); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .seal svg, .seal-label { transition: none; }
+  .seal-leaf, .seal-leaf svg, .seal-leaf img, .seal-label { transition: none; }
 }
 
 /* ---------- Page transitions ----------
