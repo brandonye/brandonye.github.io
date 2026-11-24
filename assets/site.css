@@ -189,33 +189,26 @@ pre code { background: none; padding: 0; font-size: inherit; }
 main { padding: 2.25rem 0 4rem; }
 
 /* ---------- Back to top ---------- */
-/* The green 葉 leaf at the bottom of the window, at the right of the text
-   column. It shows only
-   on pages with real room to scroll, once you've scrolled down (the script
-   in default.html adds .long-page and .scrolled). Hovering it unfolds
-   "Back to top" beside it; the button stays pinned to the corner, so the
-   leaf slides left to make room. */
+/* The green 葉 leaf at the very end of the page, at the right of the text
+   column: simply there when you reach the bottom. It's only on pages with
+   real room to scroll (the script in default.html adds .long-page when the
+   page loads). Hovering it unfolds "Back to top" beside it; the button keeps
+   to the column's right edge, so the leaf slides left to make room. */
+.site-footer { display: none; justify-content: flex-end; padding-bottom: 1.5rem; }
+.long-page .site-footer { display: flex; }
 .to-top {
-  position: fixed;
-  /* Lined up with the right edge of the text column (less the button's own
-     8px padding), not the corner of the window. */
-  right: calc(max(var(--gutter), (100% - var(--measure)) / 2) - 8px + env(safe-area-inset-right));
-  bottom: calc(1rem + env(safe-area-inset-bottom));
-  z-index: 10;
   display: flex;
   align-items: center;
+  margin-right: -8px; /* the leaf's edge, not the button's padding, meets the column's edge */
   padding: 6px 8px;
   border: 0;
-  border-radius: 999px;
-  background: var(--bg); /* so text scrolling underneath doesn't show through */
+  border-radius: 4px;
+  background: none;
   color: var(--muted);
   font: inherit;
   cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 250ms ease, visibility 250ms, color 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: color 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-.long-page.scrolled .to-top { opacity: 1; visibility: visible; }
 .to-top img { display: block; width: 26px; height: 26px; }
 /* Brightened a little so the green doesn't sink into the dark page. */
 :root[data-theme="dark"] .to-top img { filter: brightness(1.5) saturate(1.1); }
@@ -244,7 +237,7 @@ main { padding: 2.25rem 0 4rem; }
   .to-top, .to-top-label { transition: none; }
 }
 @media print {
-  .to-top { display: none; }
+  .site-footer { display: none; }
 }
 
 /* ---------- Page transitions ----------

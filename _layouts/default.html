@@ -10,15 +10,17 @@
 <main id="content">
 {{ content }}
 </main>
+<footer class="site-footer">
+  <button class="to-top" type="button" aria-label="Back to top">
+    <img src="{{ '/assets/leaf-green.png' | relative_url }}" alt="" width="26" height="26">
+    <span class="to-top-label" aria-hidden="true">Back to top</span>
+  </button>
+</footer>
 </div>
-<button class="to-top" type="button" aria-label="Back to top">
-  <img src="{{ '/assets/leaf-green.png' | relative_url }}" alt="" width="26" height="26">
-  <span class="to-top-label" aria-hidden="true">Back to top</span>
-</button>
 <script>
-  /* The leaf in the bottom-right corner. It shows only on pages whose content
-     runs past the bottom of the screen, once you've scrolled down a little,
-     and glides back to the top when clicked (without changing the address). */
+  /* The leaf at the end of the page. It's there only on pages whose content
+     runs past the bottom of the screen, and glides back to the top when
+     clicked (without changing the address). */
   (function () {
     var btn = document.querySelector(".to-top");
     var main = document.querySelector("main");
@@ -37,7 +39,6 @@
       var contentEnd = last ? last.getBoundingClientRect().bottom + window.scrollY : 0;
       root.classList.toggle("long-page", contentEnd > viewport.offsetHeight);
     }
-    function checkScroll() { root.classList.toggle("scrolled", window.scrollY > 40); }
     /* The label unfolds to exactly its own width (site.css reads --label-w),
        so the leaf's slide lasts the whole animation instead of finishing
        early on its way to a wider maximum. */
@@ -45,8 +46,6 @@
     function measureLabel() { btn.style.setProperty("--label-w", label.scrollWidth + "px"); }
     function checkAll() { checkLength(); measureLabel(); }
     checkAll();
-    checkScroll();
-    window.addEventListener("scroll", checkScroll, { passive: true });
     window.addEventListener("resize", checkAll);
     window.addEventListener("load", checkAll);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(checkAll);
