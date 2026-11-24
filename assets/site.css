@@ -39,8 +39,9 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 }
 
 /* The colour behind the page, seen when you pull past its top or bottom
-   edge. At the very top (head.html adds .at-top) it's the banner's black, so
-   the banner looks like it carries on; everywhere else it's the page colour. */
+   edge. Pulling past the top (head.html adds .at-top) shows the banner's
+   black, so the banner looks like it carries on; pulling past the bottom
+   shows the page colour. */
 html { background-color: var(--bg); }
 html.at-top { background-color: var(--band); }
 
