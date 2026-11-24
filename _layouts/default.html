@@ -3,13 +3,16 @@
 <head>
 {% include head.html %}
 </head>
-<body>
+<body id="top">
 {% include banner.html %}
 <div class="container">
 {% include nav.html %}
 <main id="content">
 {{ content }}
 </main>
+<footer class="site-footer">
+  <a class="seal" href="#top" aria-label="Back to top" title="Back to top"></a>
+</footer>
 </div>
 </body>
 </html>

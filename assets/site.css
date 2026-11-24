@@ -30,6 +30,12 @@
 
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
+/* Jumps within a page (the leaf back to the top, footnotes) glide rather
+   than snap, unless the visitor asks for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
 /* The colour behind the page, seen when you pull past its top or bottom
    edge. At the very top (head.html adds .at-top) it's the banner's black, so
    the banner looks like it carries on; everywhere else it's the page colour. */
@@ -43,6 +49,10 @@ body {
      shows below the content on a short page. */
   min-height: 100vh;
   min-height: 100dvh;
+  /* A column, so on a short page the footer's leaf sits at the bottom of the
+     window (see .container and main below). */
+  display: flex;
+  flex-direction: column;
   color: var(--text);
   font-family: var(--serif);
   font-size: 1.125rem;
@@ -108,9 +118,13 @@ pre code { background: none; padding: 0; font-size: inherit; }
 
 /* ---------- Layout ---------- */
 .container {
+  width: 100%;
   max-width: calc(var(--measure) + 2 * var(--gutter));
   margin: 0 auto;
   padding: 0 var(--gutter);
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .site-header {
@@ -179,7 +193,35 @@ pre code { background: none; padding: 0; font-size: inherit; }
 :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
-main { padding: 2.25rem 0 4rem; }
+main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
+
+/* ---------- Footer ---------- */
+/* The 葉 leaf as a small seal at the foot of every page, the way a scroll
+   ends with the artist's seal. It's the leaf icon used as a stencil, so it
+   takes the text colour in light and dark mode. Clicking it goes back to the
+   top of the page; on hover it lifts a little, hinting at that. */
+.site-footer { display: flex; justify-content: center; padding-bottom: 2rem; }
+.seal {
+  display: block;
+  padding: 6px; /* a bigger target than the leaf itself */
+  border-radius: 4px;
+  color: var(--text);
+  transition: transform 200ms ease;
+}
+.seal::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-color: currentColor;
+  -webkit-mask: url("icon.svg") center / contain no-repeat;
+  mask: url("icon.svg") center / contain no-repeat;
+}
+.seal:hover { transform: translateY(-3px); }
+.seal:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .seal { transition: none; }
+}
 
 /* ---------- Page transitions ----------
    Moving between pages cross-fades the content while the banner and
@@ -279,6 +321,19 @@ main { padding: 2.25rem 0 4rem; }
 .post-header { margin-bottom: 2rem; }
 .post-header .meta { color: var(--muted); font-size: 1rem; margin: 0; }
 .post-body img { display: block; margin: 1.5rem auto; }
+/* The same leaf closes each essay, just after its last word. Footnotes, if
+   there are any, come after it. */
+.post-body > p:last-of-type::after {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-left: 0.35em;
+  vertical-align: -0.15em;
+  background-color: currentColor;
+  -webkit-mask: url("icon.svg") center / contain no-repeat;
+  mask: url("icon.svg") center / contain no-repeat;
+}
 
 /* ---------- Small screens ---------- */
 @media (max-width: 520px) {
