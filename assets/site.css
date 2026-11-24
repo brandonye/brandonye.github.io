@@ -194,7 +194,7 @@ main { padding: 2.25rem 0 4rem; }
    real room to scroll (the script in default.html adds .long-page when the
    page loads). Hovering it unfolds "Back to top" beside it; the button keeps
    to the column's right edge, so the leaf slides left to make room. */
-.site-footer { display: none; justify-content: flex-end; padding-bottom: 1.5rem; }
+.site-footer { display: none; justify-content: flex-end; margin-top: -2rem; padding-bottom: 1.5rem; }
 .long-page .site-footer { display: flex; }
 .to-top {
   display: flex;
@@ -207,7 +207,7 @@ main { padding: 2.25rem 0 4rem; }
   color: var(--muted);
   font: inherit;
   cursor: pointer;
-  transition: color 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: color 550ms cubic-bezier(0.33, 1, 0.68, 1);
 }
 .to-top img { display: block; width: 26px; height: 26px; }
 /* Brightened a little so the green doesn't sink into the dark page. */
@@ -220,10 +220,10 @@ main { padding: 2.25rem 0 4rem; }
   font-size: 0.8rem;
   line-height: 1.4;
   opacity: 0;
-  /* The same timing as the underline under the Research and Writing tabs. */
-  transition: max-width 300ms cubic-bezier(0.22, 1, 0.36, 1),
-              margin-left 300ms cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  /* A slow, soft unfold that settles gently. */
+  transition: max-width 550ms cubic-bezier(0.33, 1, 0.68, 1),
+              margin-left 550ms cubic-bezier(0.33, 1, 0.68, 1),
+              opacity 550ms cubic-bezier(0.33, 1, 0.68, 1);
 }
 /* Hover only on devices with a real pointer; on a phone a tap just goes up.
    Keyboard focus unfolds the label too. */
