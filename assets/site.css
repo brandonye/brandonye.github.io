@@ -198,12 +198,16 @@ pre code { background: none; padding: 0; font-size: inherit; }
 main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
 
 /* ---------- Footer ---------- */
-/* The 葉 leaf as a small seal at the foot of every page, the way a scroll
-   ends with the artist's seal. It's drawn from leaf.svg (vector, so it's
-   sharp on any screen) in the text colour, light or dark. Clicking it goes
-   back to the top of the page. On hover the ink turns leaf green and the
-   leaf lifts a little. */
+/* The 葉 leaf and "Back to top", together, as a small seal at the foot of
+   the page, the way a scroll ends with the artist's seal. The leaf is drawn
+   from leaf.svg (vector, so it's sharp on any screen) in the text colour,
+   light or dark. Clicking it goes back to the top of the page. On hover the
+   ink turns leaf green and the leaf lifts a little. */
 .site-footer { display: flex; justify-content: center; padding-bottom: 1.75rem; }
+/* Only on pages too long to fit in the window: the script in default.html
+   adds .scrollable. Hidden rather than removed, so the page's length (and
+   so whether it scrolls) stays the same either way. */
+:root:not(.scrollable) .site-footer { visibility: hidden; }
 .seal {
   display: flex;
   align-items: center;
@@ -223,23 +227,15 @@ main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
   transition: color 250ms ease, transform 300ms ease;
 }
 .seal:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
-/* "Back to top" beside the leaf, shown only once the page has been scrolled
-   (head.html marks the very top of the page with .at-top). Leaf and label are
-   centred together; at the top the label folds away to nothing, so the leaf
-   alone is centred, and it widens as it fades in, so the leaf glides aside
-   rather than jumping. */
+/* "Back to top" beside the leaf; the two are centred together. */
 .seal-label {
-  overflow: hidden;
-  max-width: 7em;
   margin-left: 0.3rem;
   white-space: nowrap;
   color: var(--muted);
   font-size: 0.75rem;
-  line-height: 1.4; /* room for the "p" below, since overflow is clipped */
-  transition: color 250ms ease, opacity 300ms ease, max-width 300ms ease,
-              margin-left 300ms ease, visibility 300ms;
+  line-height: 1.4;
+  transition: color 250ms ease;
 }
-.at-top .seal-label { max-width: 0; margin-left: 0; opacity: 0; visibility: hidden; }
 /* Hover only on devices with a real pointer, so a tap on a phone doesn't
    leave the leaf green. */
 @media (hover: hover) {

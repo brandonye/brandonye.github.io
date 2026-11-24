@@ -25,6 +25,16 @@
     var seal = document.querySelector(".seal");
     var root = document.documentElement;
     if (!seal) return;
+    /* Show the leaf only when the page is too long to fit in the window
+       (site.css hides it otherwise). Re-checked whenever the page or the
+       window changes size. */
+    function checkLength() {
+      root.classList.toggle("scrollable", root.scrollHeight > window.innerHeight + 1);
+    }
+    checkLength();
+    window.addEventListener("resize", checkLength);
+    window.addEventListener("load", checkLength);
+    if (window.ResizeObserver) new ResizeObserver(checkLength).observe(document.body);
     function ease(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
     seal.addEventListener("click", function () {
       var start = window.scrollY;
