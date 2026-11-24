@@ -25,16 +25,27 @@
     var seal = document.querySelector(".seal");
     var root = document.documentElement;
     if (!seal) return;
-    /* Show the leaf only when the page is too long to fit in the window
-       (site.css hides it otherwise). Re-checked whenever the page or the
-       window changes size. */
+    /* Show the leaf only when the page's content (not the empty space below
+       it) runs past the bottom of the screen. The screen is measured at its
+       smallest, with a phone browser's toolbars showing, so the answer
+       doesn't flip as they slide away. Re-checked when the content or the
+       window changes size, and once fonts have loaded. */
+    var main = document.querySelector("main");
+    var viewport = document.createElement("div");
+    viewport.setAttribute("aria-hidden", "true");
+    viewport.style.cssText = "position:fixed;top:0;left:0;width:0;height:100vh;height:100svh;visibility:hidden;pointer-events:none";
+    document.body.appendChild(viewport);
     function checkLength() {
-      root.classList.toggle("scrollable", root.scrollHeight > window.innerHeight + 1);
+      var last = main && main.lastElementChild;
+      if (!last) return;
+      var contentEnd = last.getBoundingClientRect().bottom + window.scrollY;
+      root.classList.toggle("long-page", contentEnd > viewport.offsetHeight);
     }
     checkLength();
     window.addEventListener("resize", checkLength);
     window.addEventListener("load", checkLength);
-    if (window.ResizeObserver) new ResizeObserver(checkLength).observe(document.body);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(checkLength);
+    if (window.ResizeObserver) new ResizeObserver(checkLength).observe(main);
     function ease(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
     seal.addEventListener("click", function () {
       var start = window.scrollY;
