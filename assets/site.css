@@ -201,7 +201,7 @@ main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
    the page, the way a scroll ends with the artist's seal. The leaf is drawn
    from leaf.svg (vector, so it's sharp on any screen) in the text colour,
    light or dark. Clicking it goes back to the top of the page. On hover the
-   ink turns into the green watercolor leaf and lifts a little. */
+   ink turns into the green watercolor leaf. */
 /* Only when the page's content runs past the bottom of the screen: the
    script in default.html adds .long-page. Otherwise it takes no space. */
 .site-footer { display: none; justify-content: center; padding-bottom: 1.75rem; }
@@ -224,7 +224,6 @@ main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
   display: block;
   width: 20px;
   height: 20px;
-  transition: transform 300ms ease;
 }
 .seal-leaf svg,
 .seal-leaf img {
@@ -254,13 +253,12 @@ main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
 /* Hover only on devices with a real pointer, so a tap on a phone doesn't
    leave the leaf green: the ink fades into the watercolor leaf. */
 @media (hover: hover) {
-  .seal:hover .seal-leaf { transform: translateY(-1px); }
   .seal:hover .seal-leaf svg { opacity: 0; }
   .seal:hover .seal-leaf img { opacity: 1; }
   .seal:hover .seal-label { color: var(--text); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .seal-leaf, .seal-leaf svg, .seal-leaf img, .seal-label { transition: none; }
+  .seal-leaf svg, .seal-leaf img, .seal-label { transition: none; }
 }
 
 /* ---------- Page transitions ----------
