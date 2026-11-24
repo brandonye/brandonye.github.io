@@ -189,14 +189,17 @@ pre code { background: none; padding: 0; font-size: inherit; }
 main { padding: 2.25rem 0 4rem; }
 
 /* ---------- Back to top ---------- */
-/* The green 葉 leaf in the bottom-right corner of the window. It shows only
+/* The green 葉 leaf at the bottom of the window, at the right of the text
+   column. It shows only
    on pages with real room to scroll, once you've scrolled down (the script
    in default.html adds .long-page and .scrolled). Hovering it unfolds
    "Back to top" beside it; the button stays pinned to the corner, so the
    leaf slides left to make room. */
 .to-top {
   position: fixed;
-  right: calc(1rem + env(safe-area-inset-right));
+  /* Lined up with the right edge of the text column (less the button's own
+     8px padding), not the corner of the window. */
+  right: calc(max(var(--gutter), (100% - var(--measure)) / 2) - 8px + env(safe-area-inset-right));
   bottom: calc(1rem + env(safe-area-inset-bottom));
   z-index: 10;
   display: flex;
@@ -233,10 +236,10 @@ main { padding: 2.25rem 0 4rem; }
    Keyboard focus unfolds the label too. */
 @media (hover: hover) {
   .to-top:hover { color: var(--text); }
-  .to-top:hover .to-top-label { max-width: 7em; margin-left: 0.4rem; opacity: 1; }
+  .to-top:hover .to-top-label { max-width: var(--label-w, 7em); margin-left: 0.4rem; opacity: 1; }
 }
 .to-top:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
-.to-top:focus-visible .to-top-label { max-width: 7em; margin-left: 0.4rem; opacity: 1; }
+.to-top:focus-visible .to-top-label { max-width: var(--label-w, 7em); margin-left: 0.4rem; opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   .to-top, .to-top-label { transition: none; }
 }

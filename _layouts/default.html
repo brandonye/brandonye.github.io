@@ -38,12 +38,18 @@
       root.classList.toggle("long-page", contentEnd > viewport.offsetHeight);
     }
     function checkScroll() { root.classList.toggle("scrolled", window.scrollY > 40); }
-    checkLength();
+    /* The label unfolds to exactly its own width (site.css reads --label-w),
+       so the leaf's slide lasts the whole animation instead of finishing
+       early on its way to a wider maximum. */
+    var label = btn.querySelector(".to-top-label");
+    function measureLabel() { btn.style.setProperty("--label-w", label.scrollWidth + "px"); }
+    function checkAll() { checkLength(); measureLabel(); }
+    checkAll();
     checkScroll();
     window.addEventListener("scroll", checkScroll, { passive: true });
-    window.addEventListener("resize", checkLength);
-    window.addEventListener("load", checkLength);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(checkLength);
+    window.addEventListener("resize", checkAll);
+    window.addEventListener("load", checkAll);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(checkAll);
     if (window.ResizeObserver) new ResizeObserver(checkLength).observe(main);
 
     /* The glide: easing in and out, a little longer for longer pages.
