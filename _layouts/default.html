@@ -3,7 +3,7 @@
 <head>
 {% include head.html %}
 </head>
-<body id="top">
+<body>
 {% include banner.html %}
 <div class="container">
 {% include nav.html %}
@@ -11,8 +11,46 @@
 {{ content }}
 </main>
 <footer class="site-footer">
-  <a class="seal" href="#top" aria-label="Back to top" title="Back to top"></a>
+  <button class="seal" type="button" aria-label="Back to top" title="Back to top"></button>
 </footer>
+<script>
+  /* The leaf glides back to the top (without adding "#top" to the address):
+     easing in and out, a little longer for longer pages. Scrolling, touching
+     or pressing a key on the way stops it. Visitors who ask for reduced
+     motion jump straight to the top. */
+  (function () {
+    var seal = document.querySelector(".seal");
+    var root = document.documentElement;
+    if (!seal) return;
+    function ease(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+    seal.addEventListener("click", function () {
+      var start = window.scrollY;
+      if (start <= 0) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        window.scrollTo(0, 0);
+        return;
+      }
+      var duration = Math.min(1300, 650 + start * 0.3);
+      var t0 = null, stopped = false;
+      function stop() { stopped = true; }
+      var events = ["wheel", "touchstart", "keydown"];
+      events.forEach(function (e) { window.addEventListener(e, stop, { passive: true }); });
+      root.style.scrollBehavior = "auto"; // the page's own smooth scrolling would fight each step
+      function finish() {
+        events.forEach(function (e) { window.removeEventListener(e, stop); });
+        root.style.scrollBehavior = "";
+      }
+      function step(now) {
+        if (stopped) return finish();
+        if (t0 === null) t0 = now;
+        var p = Math.min(1, (now - t0) / duration);
+        window.scrollTo(0, start * (1 - ease(p)));
+        if (p < 1) requestAnimationFrame(step); else finish();
+      }
+      requestAnimationFrame(step);
+    });
+  })();
+</script>
 </div>
 </body>
 </html>

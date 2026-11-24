@@ -204,8 +204,11 @@ main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
 .seal {
   display: block;
   padding: 6px; /* a bigger target than the leaf itself */
+  border: 0;
   border-radius: 4px;
+  background: none;
   color: var(--text);
+  cursor: pointer;
   transition: transform 200ms ease;
 }
 .seal::before {
