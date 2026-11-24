@@ -236,10 +236,9 @@ main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
 }
 .seal-leaf svg { fill: currentColor; }
 .seal-leaf img { opacity: 0; }
-/* The watercolor's deep greens would sink into the dark page, so in dark
-   mode its light and dark are flipped while keeping its greens: a pale
-   sage leaf that still shows the brushwork. */
-:root[data-theme="dark"] .seal-leaf img { filter: invert(1) hue-rotate(180deg) saturate(1.3); }
+/* On the dark page the watercolor is brightened a little so it doesn't sink
+   into the background. */
+:root[data-theme="dark"] .seal-leaf img { filter: brightness(1.5) saturate(1.1); }
 .seal:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 /* "Back to top" beside the leaf; the two are centred together. */
 .seal-label {
