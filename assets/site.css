@@ -222,8 +222,8 @@ main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
 .seal-leaf {
   position: relative;
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
 }
 .seal-leaf svg,
 .seal-leaf img {
@@ -246,7 +246,7 @@ main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
   margin-left: 0.3rem;
   white-space: nowrap;
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   line-height: 1.4;
   transition: color 250ms ease;
 }
