@@ -188,6 +188,59 @@ pre code { background: none; padding: 0; font-size: inherit; }
 
 main { padding: 2.25rem 0 4rem; }
 
+/* ---------- Back to top ---------- */
+/* The green 葉 leaf in the bottom-right corner of the window. It shows only
+   on pages with real room to scroll, once you've scrolled down (the script
+   in default.html adds .long-page and .scrolled). Hovering it unfolds
+   "Back to top" beside it; the button stays pinned to the corner, so the
+   leaf slides left to make room. */
+.to-top {
+  position: fixed;
+  right: calc(1rem + env(safe-area-inset-right));
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--bg); /* so text scrolling underneath doesn't show through */
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 250ms ease, visibility 250ms, color 250ms ease;
+}
+.long-page.scrolled .to-top { opacity: 1; visibility: visible; }
+.to-top img { display: block; width: 26px; height: 26px; }
+/* Brightened a little so the green doesn't sink into the dark page. */
+:root[data-theme="dark"] .to-top img { filter: brightness(1.5) saturate(1.1); }
+.to-top-label {
+  overflow: hidden;
+  max-width: 0;
+  margin-left: 0;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  opacity: 0;
+  transition: max-width 300ms ease, margin-left 300ms ease, opacity 250ms ease;
+}
+/* Hover only on devices with a real pointer; on a phone a tap just goes up.
+   Keyboard focus unfolds the label too. */
+@media (hover: hover) {
+  .to-top:hover { color: var(--text); }
+  .to-top:hover .to-top-label { max-width: 7em; margin-left: 0.4rem; opacity: 1; }
+}
+.to-top:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+.to-top:focus-visible .to-top-label { max-width: 7em; margin-left: 0.4rem; opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .to-top, .to-top-label { transition: none; }
+}
+@media print {
+  .to-top { display: none; }
+}
+
 /* ---------- Page transitions ----------
    Moving between pages cross-fades the content while the banner and
    header stay put. Browsers without view transitions switch instantly,
