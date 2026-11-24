@@ -10,12 +10,15 @@
 <main id="content">
 {{ content }}
 </main>
+{%- comment -%} Essays end with their own leaf, so they don't get this one. {%- endcomment -%}
+{% unless page.layout == "post" %}
 <footer class="site-footer">
   <button class="to-top" type="button" aria-label="Back to top">
     <img src="{{ '/assets/leaf-green.png' | relative_url }}" alt="" width="26" height="26">
     <span class="to-top-label" aria-hidden="true">Back to top</span>
   </button>
 </footer>
+{% endunless %}
 </div>
 <script>
   /* The leaf at the end of the page. It's there only on pages whose content
