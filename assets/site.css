@@ -286,8 +286,8 @@ main { padding: 2.25rem 0 4rem; }
 .post-header { margin-bottom: 2rem; }
 .post-header .meta { color: var(--muted); font-size: 1rem; margin: 0; }
 .post-body img { display: block; margin: 1.5rem auto; }
-/* The same leaf closes each essay, just after its last word. Footnotes, if
-   there are any, come after it. */
+/* The green 葉 leaf closes each essay, just after its last word. Footnotes,
+   if there are any, come after it. */
 .post-body > p:last-of-type::after {
   content: "";
   display: inline-block;
@@ -295,10 +295,10 @@ main { padding: 2.25rem 0 4rem; }
   height: 1em;
   margin-left: 0.35em;
   vertical-align: -0.15em;
-  background-color: currentColor;
-  -webkit-mask: url("leaf.svg") center / contain no-repeat;
-  mask: url("leaf.svg") center / contain no-repeat;
+  background: url("leaf-green.png") center / contain no-repeat;
 }
+/* Brightened a little so the green doesn't sink into the dark page. */
+:root[data-theme="dark"] .post-body > p:last-of-type::after { filter: brightness(1.5) saturate(1.1); }
 
 /* ---------- Small screens ---------- */
 @media (max-width: 520px) {
