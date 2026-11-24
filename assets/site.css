@@ -7,6 +7,7 @@
   --underline: #c4c4c4;
   --code-bg: #eaeae8;
   --band: #000000;
+  --leaf: #4a6f34;     /* the leaf's green, shown when you hover the seal */
   --measure: 680px;
   --gutter: 24px;
   --serif: "Iowan Old Style", "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
@@ -22,6 +23,7 @@
   --rule: #2c2c2c;
   --underline: #5a5a5a;
   --code-bg: #1c1c1c;
+  --leaf: #8fb86c;
   color-scheme: dark;
 }
 
@@ -197,33 +199,55 @@ main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
 
 /* ---------- Footer ---------- */
 /* The 葉 leaf as a small seal at the foot of every page, the way a scroll
-   ends with the artist's seal. It's the leaf icon used as a stencil, so it
-   takes the text colour in light and dark mode. Clicking it goes back to the
-   top of the page; on hover it lifts a little, hinting at that. */
-.site-footer { display: flex; justify-content: center; padding-bottom: 2rem; }
+   ends with the artist's seal. It's drawn from leaf.svg (vector, so it's
+   sharp on any screen) in the text colour, light or dark. Clicking it goes
+   back to the top of the page. On hover the ink turns leaf green and the
+   leaf lifts a little. */
+.site-footer { display: flex; justify-content: center; padding-bottom: 1.75rem; }
 .seal {
-  display: block;
-  padding: 6px; /* a bigger target than the leaf itself */
+  display: flex;
+  align-items: center;
+  padding: 8px; /* a bigger target than the leaf itself */
   border: 0;
   border-radius: 4px;
   background: none;
   color: var(--text);
+  font: inherit;
   cursor: pointer;
-  transition: transform 200ms ease;
 }
-.seal::before {
-  content: "";
+.seal svg {
   display: block;
-  width: 24px;
-  height: 24px;
-  background-color: currentColor;
-  -webkit-mask: url("icon.svg") center / contain no-repeat;
-  mask: url("icon.svg") center / contain no-repeat;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transition: color 250ms ease, transform 300ms ease;
 }
-.seal:hover { transform: translateY(-3px); }
 .seal:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+/* "Back to top" beside the leaf, shown only once the page has been scrolled
+   (head.html marks the very top of the page with .at-top). Leaf and label are
+   centred together; at the top the label folds away to nothing, so the leaf
+   alone is centred, and it widens as it fades in, so the leaf glides aside
+   rather than jumping. */
+.seal-label {
+  overflow: hidden;
+  max-width: 7em;
+  margin-left: 0.3rem;
+  white-space: nowrap;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.4; /* room for the "p" below, since overflow is clipped */
+  transition: color 250ms ease, opacity 300ms ease, max-width 300ms ease,
+              margin-left 300ms ease, visibility 300ms;
+}
+.at-top .seal-label { max-width: 0; margin-left: 0; opacity: 0; visibility: hidden; }
+/* Hover only on devices with a real pointer, so a tap on a phone doesn't
+   leave the leaf green. */
+@media (hover: hover) {
+  .seal:hover svg { color: var(--leaf); transform: translateY(-1px); }
+  .seal:hover .seal-label { color: var(--text); }
+}
 @media (prefers-reduced-motion: reduce) {
-  .seal { transition: none; }
+  .seal svg, .seal-label { transition: none; }
 }
 
 /* ---------- Page transitions ----------
@@ -334,8 +358,8 @@ main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
   margin-left: 0.35em;
   vertical-align: -0.15em;
   background-color: currentColor;
-  -webkit-mask: url("icon.svg") center / contain no-repeat;
-  mask: url("icon.svg") center / contain no-repeat;
+  -webkit-mask: url("leaf.svg") center / contain no-repeat;
+  mask: url("leaf.svg") center / contain no-repeat;
 }
 
 /* ---------- Small screens ---------- */

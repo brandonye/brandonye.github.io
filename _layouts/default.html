@@ -11,7 +11,10 @@
 {{ content }}
 </main>
 <footer class="site-footer">
-  <button class="seal" type="button" aria-label="Back to top" title="Back to top"></button>
+  <button class="seal" type="button" aria-label="Back to top">
+    <svg viewBox="0 0 1255 1255" aria-hidden="true" focusable="false"><use href="{{ '/assets/leaf.svg#leaf' | relative_url }}"></use></svg>
+    <span class="seal-label" aria-hidden="true">Back to top</span>
+  </button>
 </footer>
 <script>
   /* The leaf glides back to the top (without adding "#top" to the address):
