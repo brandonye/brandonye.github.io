@@ -217,8 +217,8 @@ main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
 }
 .seal svg {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
   fill: currentColor;
   transition: color 250ms ease, transform 300ms ease;
 }
@@ -234,7 +234,7 @@ main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
   margin-left: 0.3rem;
   white-space: nowrap;
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   line-height: 1.4; /* room for the "p" below, since overflow is clipped */
   transition: color 250ms ease, opacity 300ms ease, max-width 300ms ease,
               margin-left 300ms ease, visibility 300ms;
