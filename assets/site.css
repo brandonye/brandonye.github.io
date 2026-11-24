@@ -50,10 +50,6 @@ body {
      shows below the content on a short page. */
   min-height: 100vh;
   min-height: 100dvh;
-  /* A column, so on a short page the footer's leaf sits at the bottom of the
-     window (see .container and main below). */
-  display: flex;
-  flex-direction: column;
   color: var(--text);
   font-family: var(--serif);
   font-size: 1.125rem;
@@ -119,13 +115,9 @@ pre code { background: none; padding: 0; font-size: inherit; }
 
 /* ---------- Layout ---------- */
 .container {
-  width: 100%;
   max-width: calc(var(--measure) + 2 * var(--gutter));
   margin: 0 auto;
   padding: 0 var(--gutter);
-  flex: 1 0 auto;
-  display: flex;
-  flex-direction: column;
 }
 
 .site-header {
@@ -139,19 +131,6 @@ pre code { background: none; padding: 0; font-size: inherit; }
 }
 .site-title { margin: 0; font-size: 1.4rem; font-weight: 600; line-height: 1.3; }
 .site-title a { text-decoration: none; }
-/* The green 葉 ("Ye", leaf) after the name, like a seal beside a signature.
-   Sized so its ink runs from the baseline to the top of the capitals, the
-   same height as the B and the Y: the capitals are 0.698em tall and the ink
-   fills 95.2% of the image, with 2.6% empty below it. */
-.name-leaf {
-  display: inline-block;
-  width: 0.733em;
-  height: 0.733em;
-  margin-left: 0.2em;
-  vertical-align: -0.019em;
-}
-/* Brightened a little on the dark page, as at the foot of the page. */
-:root[data-theme="dark"] .name-leaf { filter: brightness(1.5) saturate(1.1); }
 .site-nav { display: flex; align-items: center; gap: 1.25rem; }
 .site-nav a {
   position: relative;
@@ -207,71 +186,7 @@ pre code { background: none; padding: 0; font-size: inherit; }
 :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
-main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
-
-/* ---------- Footer ---------- */
-/* The 葉 leaf and "Back to top", together, as a small seal at the foot of
-   the page, the way a scroll ends with the artist's seal. The leaf is drawn
-   from leaf.svg (vector, so it's sharp on any screen) in the text colour,
-   light or dark. Clicking it goes back to the top of the page. On hover the
-   ink turns into the green watercolor leaf. */
-/* Only when the page's content runs past the bottom of the screen: the
-   script in default.html adds .long-page. Otherwise it takes no space. */
-.site-footer { display: none; justify-content: center; padding-bottom: 1.75rem; }
-.long-page .site-footer { display: flex; }
-.seal {
-  display: flex;
-  align-items: center;
-  padding: 8px; /* a bigger target than the leaf itself */
-  border: 0;
-  border-radius: 4px;
-  background: none;
-  color: var(--text);
-  font: inherit;
-  cursor: pointer;
-}
-/* The black ink leaf (vector) with the watercolor leaf (leaf-green.png)
-   stacked exactly on top of it, hidden until hover. */
-.seal-leaf {
-  position: relative;
-  display: block;
-  width: 22px;
-  height: 22px;
-}
-.seal-leaf svg,
-.seal-leaf img {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  transition: opacity 250ms ease;
-}
-.seal-leaf svg { fill: currentColor; }
-.seal-leaf img { opacity: 0; }
-/* On the dark page the watercolor is brightened a little so it doesn't sink
-   into the background. */
-:root[data-theme="dark"] .seal-leaf img { filter: brightness(1.5) saturate(1.1); }
-.seal:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
-/* "Back to top" beside the leaf; the two are centred together. */
-.seal-label {
-  margin-left: 0.3rem;
-  white-space: nowrap;
-  color: var(--muted);
-  font-size: 0.8rem;
-  line-height: 1.4;
-  transition: color 250ms ease;
-}
-/* Hover only on devices with a real pointer, so a tap on a phone doesn't
-   leave the leaf green: the ink fades into the watercolor leaf. */
-@media (hover: hover) {
-  .seal:hover .seal-leaf svg { opacity: 0; }
-  .seal:hover .seal-leaf img { opacity: 1; }
-  .seal:hover .seal-label { color: var(--text); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .seal-leaf svg, .seal-leaf img, .seal-label { transition: none; }
-}
+main { padding: 2.25rem 0 4rem; }
 
 /* ---------- Page transitions ----------
    Moving between pages cross-fades the content while the banner and
@@ -390,11 +305,7 @@ main { padding: 2.25rem 0 4rem; flex: 1 0 auto; }
   :root { --gutter: 18px; }
   body { font-size: 1.0625rem; }
   h1 { font-size: 1.6rem; }
-  .site-header { padding-top: 1.25rem; column-gap: 1rem; }
-  /* Room for the leaf: a slightly smaller name and tighter tabs keep the
-     name and the tabs on one line on most phones. */
-  .site-title { font-size: 1.3rem; }
-  .site-nav { gap: 0.9rem; }
+  .site-header { padding-top: 1.25rem; }
   .banner img { height: 96px; }
   /* Date and title stay side by side, with a narrower date column so the
      title has room; a long title wraps under itself. */

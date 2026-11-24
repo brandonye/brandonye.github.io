@@ -1,8 +1,8 @@
 <header class="site-header">
   {% if page.layout == "home" %}
-  <h1 class="site-title"><a href="{{ '/' | relative_url }}" aria-current="page">{{ site.title }}<img class="name-leaf" src="{{ '/assets/leaf-green.png' | relative_url }}" alt="" width="27" height="27"></a></h1>
+  <h1 class="site-title"><a href="{{ '/' | relative_url }}" aria-current="page">{{ site.title }}</a></h1>
   {% else %}
-  <p class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}<img class="name-leaf" src="{{ '/assets/leaf-green.png' | relative_url }}" alt="" width="27" height="27"></a></p>
+  <p class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></p>
   {% endif %}
   <nav class="site-nav" aria-label="Main">
     <a href="{{ '/research/' | relative_url }}"{% if page.url == '/research/' %} aria-current="page"{% endif %}>Research</a>
