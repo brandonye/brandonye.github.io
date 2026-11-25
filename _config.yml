@@ -24,6 +24,10 @@ links:
 # below and remove `assets/cv.pdf` from .gitignore so the file is published.
 # cv: /assets/cv.pdf
 
+# The green leaf at the end of long pages that glides back to the top
+# (_includes/back-to-top.html). Off for now: set to true to bring it back.
+back_to_top: false
+
 # ---------------------------------------------------------------
 # Build settings. You shouldn't need to change these.
 # ---------------------------------------------------------------
