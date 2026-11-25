@@ -209,9 +209,16 @@ main { padding: 2.25rem 0 4rem; }
   cursor: pointer;
   transition: color 600ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-.to-top img { display: block; width: 26px; height: 26px; }
-/* Brightened a little so the green doesn't sink into the dark page. */
-:root[data-theme="dark"] .to-top img { filter: brightness(1.5) saturate(1.1); }
+.to-top-leaf {
+  display: block;
+  width: 26px;
+  height: 26px;
+  background: url("leaf-green.png") center / contain no-repeat;
+}
+/* In dark mode the leaf's lightness is flipped (its greens kept), so the
+   葉, painted in the darkest green, becomes the lightest part and stays easy
+   to read against the dark page. */
+:root[data-theme="dark"] .to-top-leaf { background-image: url("leaf-green-dark.png"); }
 .to-top-label {
   overflow: hidden;
   max-width: 0;
@@ -353,8 +360,8 @@ main { padding: 2.25rem 0 4rem; }
   vertical-align: -0.15em;
   background: url("leaf-green.png") center / contain no-repeat;
 }
-/* Brightened a little so the green doesn't sink into the dark page. */
-:root[data-theme="dark"] .post-body > p:last-of-type::after { filter: brightness(1.5) saturate(1.1); }
+/* The dark-mode leaf (see .to-top-leaf), so the 葉 stays easy to read. */
+:root[data-theme="dark"] .post-body > p:last-of-type::after { background-image: url("leaf-green-dark.png"); }
 
 /* ---------- Small screens ---------- */
 @media (max-width: 520px) {
