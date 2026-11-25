@@ -231,6 +231,10 @@ main { padding: 2.25rem 0 4rem; }
   .to-top:hover { color: var(--text); }
   .to-top:hover .to-top-label { max-width: var(--label-w, 7em); margin-left: 0.4rem; opacity: 1; }
 }
+/* Touch screens can't hover, so there the label is simply always shown. */
+@media (hover: none) {
+  .to-top .to-top-label { max-width: none; margin-left: 0.4rem; opacity: 1; }
+}
 .to-top:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
 .to-top:focus-visible .to-top-label { max-width: var(--label-w, 7em); margin-left: 0.4rem; opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
