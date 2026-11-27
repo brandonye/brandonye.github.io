@@ -1,0 +1,85 @@
+{%- comment -%}
+  The floating scrollbar: a thin bar over the right edge of the page, shown
+  while you scroll (or point at it) and fading out a moment after. It can be
+  dragged. Only on computers whose own scrollbars take up room: head.html
+  spots those and adds .float-scroll, and site.css hides the browser's own
+  scrollbar there. Styles are under "Floating scrollbar" in site.css.
+{%- endcomment -%}
+<script>
+  (function () {
+    var root = document.documentElement;
+    if (!root.classList.contains("float-scroll")) return;
+
+    var bar = document.createElement("div");
+    bar.className = "scroll-thumb";
+    bar.setAttribute("aria-hidden", "true");
+    document.body.appendChild(bar);
+
+    var MIN_HEIGHT = 32;   // shortest the bar gets on a very long page, px
+    var LINGER = 900;      // how long it stays after you stop scrolling, ms
+    var range = 0;         // how far the page scrolls
+    var travel = 0;        // how far the bar moves
+    var hideTimer = null;
+    var dragging = false, dragY = 0, dragScroll = 0;
+
+    /* Size the bar to the share of the page on screen; hide it on pages
+       that don't scroll. */
+    function measure() {
+      var view = root.clientHeight, total = root.scrollHeight;
+      range = total - view;
+      bar.hidden = range < 1;
+      if (bar.hidden) return;
+      var height = Math.max(MIN_HEIGHT, view * view / total);
+      travel = view - height;
+      bar.style.height = height + "px";
+      place();
+    }
+    function place() {
+      var y = Math.min(Math.max(window.scrollY, 0), range);
+      bar.style.transform = "translateY(" + (range ? y / range * travel : 0) + "px)";
+    }
+    function show() {
+      bar.classList.add("is-active");
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () {
+        if (!dragging) bar.classList.remove("is-active");
+      }, LINGER);
+    }
+
+    window.addEventListener("scroll", function () {
+      if (bar.hidden) return;
+      place();
+      show();
+    }, { passive: true });
+    window.addEventListener("resize", measure);
+    window.addEventListener("load", measure);
+    if (window.ResizeObserver) new ResizeObserver(measure).observe(document.body);
+    measure();
+
+    /* Dragging the bar scrolls the page, straight along with the pointer
+       (the page's smooth scrolling is paused so it doesn't lag behind). */
+    bar.addEventListener("pointerdown", function (e) {
+      if (e.button !== 0) return;
+      e.preventDefault();
+      dragging = true;
+      dragY = e.clientY;
+      dragScroll = window.scrollY;
+      bar.setPointerCapture(e.pointerId);
+      bar.classList.add("is-dragging", "is-active");
+      root.style.scrollBehavior = "auto";
+    });
+    bar.addEventListener("pointermove", function (e) {
+      if (!dragging || !travel) return;
+      window.scrollTo(0, dragScroll + (e.clientY - dragY) * range / travel);
+    });
+    function endDrag() {
+      if (!dragging) return;
+      dragging = false;
+      bar.classList.remove("is-dragging");
+      root.style.scrollBehavior = "";
+      show();
+    }
+    bar.addEventListener("pointerup", endDrag);
+    bar.addEventListener("pointercancel", endDrag);
+  })();
+</script>

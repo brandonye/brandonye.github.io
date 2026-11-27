@@ -7,6 +7,9 @@
   --underline: #c4c4c4;
   --code-bg: #eaeae8;
   --band: #000000;
+  --thumb: rgba(0, 0, 0, 0.4);
+  --thumb-strong: rgba(0, 0, 0, 0.55);
+  --thumb-edge: rgba(255, 255, 255, 0.45);
   --measure: 680px;
   --gutter: 24px;
   --serif: "Iowan Old Style", "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
@@ -22,6 +25,9 @@
   --rule: #2c2c2c;
   --underline: #5a5a5a;
   --code-bg: #1c1c1c;
+  --thumb: rgba(255, 255, 255, 0.4);
+  --thumb-strong: rgba(255, 255, 255, 0.55);
+  --thumb-edge: rgba(0, 0, 0, 0.45);
   color-scheme: dark;
 }
 
@@ -30,12 +36,52 @@
 
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
-/* Always show the scrollbar's track, even on a page too short to scroll, so
-   the page doesn't nudge sideways when you move between a long page
-   (Research) and a short one (Writing). (Just reserving the space would show
-   the black behind the page there.) Browsers whose scrollbars float over the
-   page (phones, and Macs by default) show nothing extra. */
-html { overflow-y: scroll; }
+/* Scrollbars that take up room (a Mac set to always show them, Windows)
+   would narrow the long pages (Research) but not the short ones (Writing),
+   nudging the page sideways between tabs. On those computers head.html adds
+   .float-scroll: the browser's own scrollbar is hidden and a thin one floats
+   over the page instead (see "Floating scrollbar" below). Scrollbars that
+   already float over the page (phones, Macs by default) are left alone. */
+html.float-scroll { scrollbar-width: none; }
+html.float-scroll::-webkit-scrollbar { display: none; }
+
+/* ---------- Floating scrollbar ----------
+   The thin bar that stands in for those scrollbars (_includes/scrollbar.html
+   sizes and moves it). It floats over the page's right edge, fades in while
+   you scroll or point at it, fades out a moment after, and can be dragged.
+   A faint outline keeps it visible over the black banner. */
+.scroll-thumb {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  width: 14px; /* the area you can grab; the bar drawn inside is thinner */
+  opacity: 0;
+  transition: opacity 500ms ease;
+  touch-action: none;
+}
+.scroll-thumb::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  right: 3px;
+  width: 6px;
+  border-radius: 999px;
+  background: var(--thumb);
+  box-shadow: 0 0 0 1px var(--thumb-edge);
+  transition: width 150ms ease, background-color 150ms ease;
+}
+.scroll-thumb.is-active,
+.scroll-thumb:hover { opacity: 1; transition-duration: 150ms; }
+.scroll-thumb:hover::before,
+.scroll-thumb.is-dragging::before { width: 9px; background: var(--thumb-strong); }
+@media (prefers-reduced-motion: reduce) {
+  .scroll-thumb, .scroll-thumb::before { transition: none; }
+}
+@media print {
+  .scroll-thumb { display: none; }
+}
 
 /* Jumps within a page (the leaf back to the top, footnotes) glide rather
    than snap, unless the visitor asks for reduced motion. */

@@ -7,6 +7,16 @@
     var t = localStorage.getItem("theme");
     if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
   } catch (e) {}
+  /* If this computer's scrollbars take up room, mark the page so its own is
+     hidden and a thin one floats over the page instead (scrollbar.html), so
+     long and short pages are the same width. */
+  (function () {
+    var probe = document.createElement("div");
+    probe.style.cssText = "position:absolute;top:-100px;width:50px;height:50px;overflow:scroll;visibility:hidden";
+    document.documentElement.appendChild(probe);
+    if (probe.offsetWidth > probe.clientWidth) document.documentElement.classList.add("float-scroll");
+    probe.remove();
+  })();
   /* Pulling past the top of the page shows black, continuing the banner;
      pulling past the bottom shows the page colour (see site.css). On a page
      that fits on one screen you're at the top and the bottom at once, so the
