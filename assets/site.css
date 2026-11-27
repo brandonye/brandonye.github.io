@@ -30,6 +30,13 @@
 
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
+/* Always show the scrollbar's track, even on a page too short to scroll, so
+   the page doesn't nudge sideways when you move between a long page
+   (Research) and a short one (Writing). (Just reserving the space would show
+   the black behind the page there.) Browsers whose scrollbars float over the
+   page (phones, and Macs by default) show nothing extra. */
+html { overflow-y: scroll; }
+
 /* Jumps within a page (the leaf back to the top, footnotes) glide rather
    than snap, unless the visitor asks for reduced motion. */
 @media (prefers-reduced-motion: no-preference) {
