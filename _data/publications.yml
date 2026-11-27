@@ -18,7 +18,7 @@
   selected: true
   url: "https://arxiv.org/abs/2610.11069"
 
-- title: "Incidental information contaminates patient notes and disrupts clinical reasoning in large language models"
+- title: "Large language models are vulnerable to incidental information in clinical documentation and reasoning"
   authors: "Vishwanath K, Ye B, Alyakin A, Markert JE, Hsieh A, Mańkowski M, Oermann EK"
   venue: "arXiv"
   year: 2026
